@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+  {{ form.media }}
+
+</head>
+<body>
+<p>Creating course</p>
+<fieldset class="module aligned ">
+<form method="POST" action="">
+{% csrf_token %}
+
+        <div class="form-row field-name">
+
+
+                <div>
+
+
+                        <label class="required" for="id_name">Name:</label>
+
+                            {{ form.name }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-code">
+
+
+                <div>
+
+
+                        <label class="required" for="id_code">Code:</label>
+
+                           {{ form.code }}
+
+
+
+                </div>
+
+        </div>
+
+
+
+        <div class="form-row field-capacity">
+
+
+                <div>
+
+
+                        <label class="required" for="id_capacity">Capacity:</label>
+
+                            {{ form.capacity }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-filled">
+
+
+                <div>
+
+
+                        <label class="required" for="id_filled">Filled:</label>
+
+                            {{ form.filled }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-units">
+
+
+                <div>
+
+
+                        <label class="required" for="id_units">Units:</label>
+
+                            {{ form.units }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-master">
+
+
+                <div>
+
+
+                        <label for="id_master">Master:</label>
+
+                            {{ form.master }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-exam">
+
+
+                <div>
+
+
+                        <label class="required">Exam:</label>
+
+                          {{ form.exam }}
+
+                <br><span class="timezonewarning">Note: You are 4.5 hours ahead of server time.</span></div>
+
+        </div>
+
+        <div class="form-row field-place">
+
+
+                <div>
+
+
+                        <label for="id_place">Place:</label>
+
+                            {{ form.place }}
+
+
+
+                </div>
+
+             <div class="form-row field-coeducational">
+
+
+                <div>
+
+
+                        <label for="id_place">Coeducational:</label>
+
+                            {{ form.coeducational }}
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-classTime">
+
+            {{ timeform.as_table}}
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+        </div>
+<input type="submit" value="Create course">
+</form>
+</fieldset>
+
+
+
+
+
+</body>
+</html>

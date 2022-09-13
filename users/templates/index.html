@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<p>{{ request.user.username }}</p>
+<span><a href="{% url 'createcourse' %}"> create new course</a></span>
+<br>
+<span><a href="{% url 'logout' %}"> log out</a></span>
+</body>
+</html>

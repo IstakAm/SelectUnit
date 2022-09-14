@@ -5,11 +5,36 @@
 
 </head>
 <body>
-<p>amoo</p>
 {% for course in courseData %}
-{% for time in course.classtime %}
-<p>"aliiii"</p>
+    <div>
+    <p>name :  {{ course.name }}</p>
+    <br>
+    <p>code : {{ course.code }} </p>
+    <br>
+    <p>capacity : {{ course.capacity }} </p>
+    <br>
+    <p>filled : {{ course.filled }}</p>
+    <br>
+    <p>units : {{ course.units }} </p>
+    <br>
+    <p>master : {{ course.master }} </p>
+    <br>
+    <p>exam date : {{ course.exam_date }} </p>
+    <br>
+    <p>exam hour : {{ course.exam_hour }} </p>
+    <br>
+    <p>place : {{ course.place }} </p>
+    <br>
+    <p>coeducational : {{ course.coeducational }} </p>
+    <br>
+    <p>class times :</p>
+{% for time in course.classTimes %}
+<div>
+<p>{{ time.day }}:  {{ time.from_hour }} to {{ time.to_hour }}</p>
+</div>
 {% endfor %}
+    </div>
+    <p>------------------------------------------------</p>
 {% endfor %}
 </body>
 </html>

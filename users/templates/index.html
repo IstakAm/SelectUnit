@@ -6,8 +6,12 @@
 </head>
 <body>
 <p>{{ request.user.username }}</p>
+
+<span><a href="{% url 'courses' %}"> my courses</a>
+    <br>
 <span><a href="{% url 'createcourse' %}"> create new course</a></span>
 <br>
 <span><a href="{% url 'logout' %}"> log out</a></span>
+
 </body>
 </html>

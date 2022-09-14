@@ -21,7 +21,7 @@ class Course(models.Model):
     exam_date = jmodels.jDateField(default=jdatetime.datetime.now(), blank=False, null=False)
     exam_hour = models.TimeField(blank=False, null=True)
     place = models.CharField(max_length=128, blank=True, null=True)
-    classTime = models.ManyToManyField('ClassTime')
+    classTime = models.ManyToManyField('ClassTime', related_name='classtimes')
     coeducational = models.BooleanField(default=True, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
 

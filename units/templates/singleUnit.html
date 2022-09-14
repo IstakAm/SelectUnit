@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+
+    <div>
+    <p>name :  {{ courseData.name }}</p>
+    <br>
+    <p>code : {{ courseData.code }} </p>
+    <br>
+    <p>capacity : {{ courseData.capacity }} </p>
+    <br>
+    <p>filled : {{ courseData.filled }}</p>
+    <br>
+    <p>units : {{ courseData.units }} </p>
+    <br>
+    <p>master : {{ courseData.master }} </p>
+    <br>
+    <p>exam date : {{ courseData.exam_date }} </p>
+    <br>
+    <p>exam hour : {{ courseData.exam_hour }} </p>
+    <br>
+    <p>place : {{ courseData.place }} </p>
+    <br>
+    <p>coeducational : {{ courseData.coeducational }} </p>
+    <br>
+    <p>class times :</p>
+{% for time in courseData.classTimes %}
+<div>
+<p>{{ time.day }}:  {{ time.from_hour }} to {{ time.to_hour }}</p>
+</div>
+{% endfor %}
+    </div>
+    <p>------------------------------------------------</p>
+</body>
+</html>

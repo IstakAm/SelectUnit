@@ -54,28 +54,52 @@ def CreateCourse(request):
     return render(request, 'CreateCourse.html', context)
 
 
+def getCourseData(id):
+    course = Course.objects.get(id=id)
+    classTimesDict = []
+    for classtime in course.classTime.all():
+        classTimesDict.append({
+            'from_hour': classtime.from_hour,
+            'to_hour': classtime.to_hour,
+            'day': classtime.get_day_display(),
+        })
+
+    courseDict = {'name': course.name, 'code': course.code, 'capacity': course.capacity, 'filled': course.filled,
+                  'units': course.units, 'master': course.master, 'exam_date': course.exam_date,
+                  'exam_hour': course.exam_hour, 'place': course.place, 'coeducational': course.coeducational,
+                  'classTimes': classTimesDict}
+    return courseDict
+
+
 def userCourses(request):
     courses = request.user.course_set.all().order_by('name')
-    classtime = request.user.course_set
+
     courseData = []
     for course in courses:
-        classtimes = ClassTime.objects.get(id = course.classTime.)
-        print(classtimes)
-        courseData.append({
-            'name': course.name,
-            'code': course.code,
-            'capacity': course.capacity,
-            'filled': course.filled,
-            'units': course.units,
-            'master': course.master,
-            'exam_date': course.exam_date,
-            'exam_hour': course.exam_hour,
-            'place': course.place,
-            'classTime': classtimes,
-            'coeducational': course.coeducational,
-        })
+        courseData.append(getCourseData(course.id))
 
     context = {
         'courseData': courseData,
     }
     return render(request, 'unit.html', context=context)
+
+
+def checkCourseAccess(id, request):
+    try:
+        course = Course.objects.get(id=id)
+        if request.user.id != course.user.id:
+            return False
+        return True
+    except models.ObjectDoesNotExist as e:
+        return False
+
+def coursePage(request, id):
+    if checkCourseAccess(id, request):
+        course = getCourseData(id)
+    else:
+        return HttpResponse("<p>the course does not exist or you dont have the premission to access</p>")
+    context = {
+        'courseData': course,
+    }
+
+    return render(request, 'singleUnit.html', context=context)

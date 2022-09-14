@@ -2,3 +2,4 @@
 *.python linguist-detectable=true
 *.css linguist-detectable=false
 *.html linguist-detectable=false
+*.HTML linguist-detectable=false

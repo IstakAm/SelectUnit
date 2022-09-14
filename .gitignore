@@ -3,5 +3,3 @@ units/migrations/
 db.sqlite3
 testin.py
 .idea/
-.gitattributes
-.gitignore

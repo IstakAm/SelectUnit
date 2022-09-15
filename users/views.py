@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 # Create your views here.
-from users.forms import CreateUserForm
+from users.forms import CreateUserForm, CourseStackForm
 from users.models import UserProfile
 from django.contrib.auth import authenticate, login, logout
 
@@ -53,3 +53,14 @@ def logOutUser(request):
     return redirect('login')
 
 
+def createCourseStack(request):
+    form = CourseStackForm()
+    if request.method == 'POST':
+        form = CourseStackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {
+        'form': form,
+    }
+    return render(request, 'courseStack.html', context=context)
